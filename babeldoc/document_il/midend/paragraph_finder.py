@@ -1,5 +1,4 @@
 import logging
-import random
 import re
 
 from babeldoc.document_il import Box
@@ -18,6 +17,7 @@ from babeldoc.document_il.utils.layout_helper import is_bullet_point
 from babeldoc.document_il.utils.paragraph_helper import is_cid_paragraph
 from babeldoc.document_il.utils.style_helper import WHITE
 from babeldoc.translation_config import TranslationConfig
+import secrets
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
 def generate_base58_id(length: int = 5) -> str:
     """Generate a random base58 ID of specified length."""
-    return "".join(random.choice(BASE58_ALPHABET) for _ in range(length))
+    return "".join(secrets.choice(BASE58_ALPHABET) for _ in range(length))
 
 
 class ParagraphFinder:
